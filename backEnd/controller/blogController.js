@@ -5,7 +5,7 @@ import userModel from "../models/userModel.js";
 //get all blogs
 export const getAllBlogsController = async (req, res) => {
   try {
-    const blogs = await blogModel.find({});
+    const blogs = await blogModel.find({}).populate("user");
 
     if (!blogs) {
       return res.status(200).send({
@@ -113,11 +113,35 @@ export const updateBlogController = async (req, res) => {
   }
 };
 
+//Get user all blogs
+export const userBlogController = async (req, res) => {
+  try {
+    const userBlog = await userModel.findById(req.params.id).populate("blogs");
+    if (!userBlog) {
+      return res.status(404).send({
+        success: false,
+        message: "blogs not found by this id!",
+      });
+    }
+
+    return res.status(200).send({
+      success: true,
+      message: "user blogs found!",
+      userBlog,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Error while finding user's blogs!",
+    });
+  }
+};
+
 //get single blog
 export const getBlogByIdController = async (req, res) => {
   try {
-    const { id } = req.params;
-    const blog = await blogModel.findById(id);
+    const blog = await blogModel.findById(req.params.id);
 
     if (!blog) {
       return res.status(404).send({
@@ -142,8 +166,10 @@ export const getBlogByIdController = async (req, res) => {
 //delete blog || working || not complete
 export const deleteBlogController = async (req, res) => {
   try {
-    const { id } = req.params;
-    const blog = await blogModel.findOneAndDelete(id).populate("user");
+    const blog = await blogModel
+      .findByIdAndDelete(req.params.id)
+      .populate("user");
+    console.log(blog);
 
     if (!blog) {
       return res.status(400).send({
@@ -152,7 +178,7 @@ export const deleteBlogController = async (req, res) => {
       });
     }
     await blog.user.blogs.pull(blogs);
-    await blog.user.save();
+    await blog.user.blogs.save();
 
     return res.status(200).send({
       success: true,
