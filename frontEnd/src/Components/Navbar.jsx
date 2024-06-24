@@ -23,7 +23,7 @@ function Navbar() {
 
     return (
         <div>
-            <div className="navbar bg-slate-900 shadow-md shadow-black">
+            <div className="navbar bg-slate-900 shadow-md shadow-black text-gray-300 fixed top-0 z-10">
                 <div className="navbar-start">
                     {isLogin && <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden p-1">
@@ -35,7 +35,7 @@ function Navbar() {
                             <li><NavLink to='/createblog'>CREATE_BLOG</NavLink></li>
                         </ul>
                     </div>}
-                    <a className="btn btn-ghost text-xl p-0 ">BLOG APP</a>
+                    <NavLink to="/" className="btn btn-ghost text-xl p-0 ">BLOG APP</NavLink>
                 </div>
                 {isLogin && <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

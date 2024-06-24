@@ -58,11 +58,11 @@ export const createBlogController = async (req, res) => {
     });
 
     const session = await mongoose.startSession();
-    session.startTransaction();
+    await session.startTransaction();
     await newBlog.save({ session });
     await existingUser.blogs.push(newBlog);
     await existingUser.save({ session });
-    session.commitTransaction();
+    await session.commitTransaction();
     await newBlog.save();
 
     return res.status(200).send({
@@ -141,7 +141,7 @@ export const userBlogController = async (req, res) => {
 //get single blog
 export const getBlogByIdController = async (req, res) => {
   try {
-    const blog = await blogModel.findById(req.params.id);
+    const blog = await blogModel.findById(req.params.id).populate("user");
 
     if (!blog) {
       return res.status(404).send({
@@ -163,13 +163,13 @@ export const getBlogByIdController = async (req, res) => {
   }
 };
 
-//delete blog || working || not complete
+//delete blog controller
 export const deleteBlogController = async (req, res) => {
   try {
     const blog = await blogModel
       .findByIdAndDelete(req.params.id)
       .populate("user");
-    console.log(blog);
+    console.log(blog.user.blogs);
 
     if (!blog) {
       return res.status(400).send({
@@ -177,9 +177,8 @@ export const deleteBlogController = async (req, res) => {
         message: "Blog is not found!",
       });
     }
-    await blog.user.blogs.pull(blogs);
-    await blog.user.blogs.save();
-
+    await blog.user.blogs.pull(blog);
+    await blog.user.save();
     return res.status(200).send({
       success: true,
       message: "Blog is deleted!",
