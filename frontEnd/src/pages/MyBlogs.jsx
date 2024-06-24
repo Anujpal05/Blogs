@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import BlogCard from '../Components/BlogCard';
 import { MagnifyingGlass } from 'react-loader-spinner'
+import Footer from '../Components/Footer';
 
 
 function MyBlogs(props) {
@@ -60,7 +61,7 @@ function MyBlogs(props) {
                             />
                         </div>
                     ))}
-
+                    <Footer />
                 </div>
 
             }

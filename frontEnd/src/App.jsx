@@ -12,6 +12,7 @@ import UpdateBlog from './pages/UpdateBlog'
 import { useSelector } from 'react-redux'
 import Blog from './pages/Blog'
 import { Toaster } from 'react-hot-toast';
+import Footer from './Components/Footer'
 
 
 function App() {

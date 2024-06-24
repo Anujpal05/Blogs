@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { MagnifyingGlass } from 'react-loader-spinner'
+import Footer from '../Components/Footer';
 
 function Blog(props) {
 
@@ -79,7 +80,7 @@ function Blog(props) {
                 </div>
             }
             {
-                !loader && <div className='h-screen pt-16'>
+                !loader && <><div className='h-screen pt-16'>
                     <div className=' flex justify-center w-screen my-6'>
                         <div className="card card-compact w-96 text-white bg-slate-900 m-3 md:w-5/12 shadow-md shadow-black ">
                             <div className=' bg-slate-950  w-full flex items-center p-2 space-x-3'>
@@ -105,6 +106,8 @@ function Blog(props) {
                         </div>
                     </div>
                 </div>
+                    <Footer />
+                </>
             }
         </>
     )

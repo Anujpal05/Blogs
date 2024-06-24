@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import BlogCard from '../Components/BlogCard';
 import { MagnifyingGlass } from 'react-loader-spinner'
+import Footer from '../Components/Footer';
 
 function Blogs(props) {
     const [blogs, setblogs] = useState([]);
@@ -42,7 +43,7 @@ function Blogs(props) {
                     />
                 </div>
             }
-            {!loader && <div className=' pt-16'>
+            {!loader && <div className=' pt-16 min-h-[94vh]'>
                 {blogs && blogs.map((blog) => (
                     <div key={blog._id}>
                         <BlogCard
@@ -56,6 +57,7 @@ function Blogs(props) {
                         />
                     </div>
                 ))}
+                <Footer />
             </div>}
         </div>
     )
