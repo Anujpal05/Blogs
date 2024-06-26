@@ -5,7 +5,6 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { MagnifyingGlass } from 'react-loader-spinner'
-import Footer from '../Components/Footer';
 
 function Blog(props) {
 
@@ -17,10 +16,15 @@ function Blog(props) {
     let isUser = false;
 
 
+
     const viewblog = async () => {
         try {
             props.setProgress(30);
-            const blog_Data = await axios.get(`http://localhost:3000/blog/get-blog/${id}`)
+            const blog_Data = await axios.get(`/api/blog/get-blog/${id}`, {
+                headers: {
+                    Authorization: `bearer ${(localStorage.getItem('token'))}`
+                }
+            })
             props.setProgress(60);
             if (blog_Data) {
                 props.setProgress(80);
@@ -40,7 +44,11 @@ function Blog(props) {
     const deleteBlog = async () => {
         const bool = confirm("Are you sure to delete this blog?");
         if (bool) {
-            await axios.delete(`http://localhost:3000/blog/delete-blog/${id}`)
+            await axios.delete(`/api/blog/delete-blog/${id}`, {
+                headers: {
+                    Authorization: `bearer ${(localStorage.getItem('token'))}`
+                }
+            })
                 .then((res) => {
                     if (res.data) {
                         toast.success('Your Blog is Deleted!');
@@ -90,7 +98,7 @@ function Blog(props) {
                                 <div className='flex justify-between w-full'>
                                     <div>
                                         <h1 className=' text-xl'>{blog?.user?.username}</h1>
-                                        <p className=' text-sm'>{blog?.time}</p>
+                                        <p className=' text-sm'>{blog?.createdAt ? blog?.createdAt : ""}</p>
                                     </div>
                                     {isUser && <div className='flex space-x-3 items-center'>
                                         <MdEdit className=' text-blue-500 md:text-3xl text-2xl' onClick={editBlog} />
@@ -106,7 +114,6 @@ function Blog(props) {
                         </div>
                     </div>
                 </div>
-                    <Footer />
                 </>
             }
         </>

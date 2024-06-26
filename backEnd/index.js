@@ -20,8 +20,8 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 //routes
-app.use("/user", userRoutes);
-app.use("/blog", blogRoute);
+app.use("/api/user", userRoutes);
+app.use("/api/blog", blogRoute);
 
 //listen
 app.listen(port, () => {

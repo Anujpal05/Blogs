@@ -32,17 +32,20 @@ function App() {
         onLoaderFinished={() => setProgress(0)}
       />
       <Toaster />
-      <Routes>
-        {!isLogin && <Route path='/' element={<Home setProgress={setProgress} />} />}
-        {isLogin && <Route path='/' element={<Blogs setProgress={setProgress} />} />}
-        <Route path='/blogs' element={<Blogs setProgress={setProgress} />} />
-        <Route path='/blog/:id' element={<Blog setProgress={setProgress} />} />
-        <Route path='/myblogs' element={<MyBlogs setProgress={setProgress} />} />
-        <Route path='/register' element={<Register setProgress={setProgress} />} />
-        <Route path='/login' element={<Login setProgress={setProgress} />} />
-        <Route path="/createblog" element={<CreateBlog setProgress={setProgress} />} />
-        <Route path="/update-blog/:id" element={<UpdateBlog setProgress={setProgress} />} />
-      </Routes>
+      <div className=' min-h-[92vh]'>
+        <Routes>
+          {!isLogin && <Route path='/' element={<Home setProgress={setProgress} />} />}
+          {isLogin && <Route path='/' element={<Blogs setProgress={setProgress} />} />}
+          <Route path='/blogs' element={<Blogs setProgress={setProgress} />} />
+          <Route path='/blog/:id' element={<Blog setProgress={setProgress} />} />
+          <Route path='/myblogs' element={<MyBlogs setProgress={setProgress} />} />
+          <Route path='/register' element={<Register setProgress={setProgress} />} />
+          <Route path='/login' element={<Login setProgress={setProgress} />} />
+          <Route path="/createblog" element={<CreateBlog setProgress={setProgress} />} />
+          <Route path="/update-blog/:id" element={<UpdateBlog setProgress={setProgress} />} />
+        </Routes>
+      </div>
+      <Footer />
     </div>
   )
 }

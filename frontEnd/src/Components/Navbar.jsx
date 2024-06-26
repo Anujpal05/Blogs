@@ -18,7 +18,8 @@ function Navbar() {
     const handleLogout = () => {
         dispatch(authActions.logout());
         localStorage.removeItem("user");
-        navigate("/")
+        localStorage.removeItem("token");
+        navigate("/");
     }
 
     return (
@@ -35,7 +36,7 @@ function Navbar() {
                             <li><NavLink to='/createblog'>CREATE_BLOG</NavLink></li>
                         </ul>
                     </div>}
-                    <NavLink to="/" className="btn btn-ghost text-xl p-0 ">BLOG APP</NavLink>
+                    <NavLink to="/" className="btn btn-ghost text-xl md:px-6 p-0 ">BLOGPULSE</NavLink>
                 </div>
                 {isLogin && <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

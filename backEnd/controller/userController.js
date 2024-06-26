@@ -1,5 +1,6 @@
 import userModel from "../models/userModel.js";
 import bcryptjs from "bcryptjs";
+import { generateToken } from "../jwt.js";
 
 //Registeration controller
 export const registerController = async (req, res) => {
@@ -32,11 +33,21 @@ export const registerController = async (req, res) => {
       password: hashPassword,
     });
 
-    await user.save();
+    const response = await user.save();
+
+    const payload = {
+      id: response._id,
+      username: response.username,
+      email: response.email,
+    };
+    //generating jwt token
+    const token = generateToken(payload);
+
     return res.status(201).send({
       success: true,
       message: "User is created successfully!",
       user,
+      token,
     });
   } catch (error) {
     console.log(error);
@@ -56,11 +67,7 @@ export const getAllUsers = async (req, res) => {
       userCount: users.length,
       success: true,
       message: "All users data",
-      user: {
-        id: user._id,
-        name: user.username,
-        email: user.email,
-      },
+      users,
     });
   } catch (error) {
     console.log(error);
@@ -101,6 +108,12 @@ export const loginController = async (req, res) => {
         message: "Invalid credentials!",
       });
     } else {
+      const payload = {
+        id: user._id,
+        name: user.username,
+        email: user.email,
+      };
+      const token = generateToken(payload);
       return res.status(200).send({
         success: true,
         message: "Login successfully!",
@@ -109,6 +122,7 @@ export const loginController = async (req, res) => {
           name: user.username,
           email: user.email,
         },
+        token,
       });
     }
   } catch (error) {

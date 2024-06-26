@@ -24,13 +24,15 @@ function Register(props) {
             email: data.email,
             password: data.password
         }
-        await axios.post('http://localhost:3000/user/register', userInfo)
+        await axios.post('/api/user/register', userInfo)
             .then((res) => {
                 props.setProgress(40);
                 if (res.data) {
                     props.setProgress(80);
                     dispatch(authActions.login());
+                    localStorage.setItem("user", res.data.user._id);
                     props.setProgress(100);
+                    localStorage.setItem('token', res.data.token);
                     toast.success(" Registered successfully!");
                     navigate("/blogs");
                 }

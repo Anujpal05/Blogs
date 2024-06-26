@@ -22,7 +22,6 @@ const BlogCard = (props) => {
         };
 
         setformattedDateTime(date.toLocaleString('en-US', options))
-        console.log(formattedDateTime)
     }
 
     useEffect(() => {
@@ -32,8 +31,8 @@ const BlogCard = (props) => {
 
 
     return (
-        <div className=' flex justify-center w-screen my-6'>
-            <div className="card card-compact w-96 text-white bg-slate-900 m-3 md:w-5/12 shadow-md shadow-black ">
+        <div className=' flex justify-center md:flex-none w-screen md:w-11/12 md:min-w-60 my-6'>
+            <div className="card card-compact md:w-full w-96 text-white bg-slate-900 m-3 shadow-md shadow-black ">
                 <div className=' bg-slate-950  w-full flex items-center p-2 space-x-3'>
                     <div className=' md:h-14 md:w-14 h-8 w-8 text-2xl rounded-full flex justify-center items-center font-bold md:text-4xl bg-blue-400 text-black'>
                         {props.username ? props.username[0].toUpperCase() : "U"}</div>

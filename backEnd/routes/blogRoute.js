@@ -7,26 +7,27 @@ import {
   updateBlogController,
   userBlogController,
 } from "../controller/blogController.js";
+import { jwtMiddleware } from "../jwt.js";
 
 const router = express.Router();
 
 //router
 
 //GET || all-blogs
-router.get("/all-blog", getAllBlogsController);
+router.route("/all-blog").get(jwtMiddleware, getAllBlogsController);
 
 //POST || create blog
-router.post("/create-blog", createBlogController);
+router.route("/create-blog").post(jwtMiddleware, createBlogController);
 
 //PUT || update blog
-router.put("/update-blog/:id", updateBlogController);
+router.route("/update-blog/:id").put(jwtMiddleware, updateBlogController);
 
 //GET || single blog details
-router.get("/get-blog/:id", getBlogByIdController);
+router.route("/get-blog/:id").get(jwtMiddleware, getBlogByIdController);
 
 //DELETE || delete blog
-router.delete("/delete-blog/:id", deleteBlogController);
+router.route("/delete-blog/:id").delete(jwtMiddleware, deleteBlogController);
 
-router.get("/user-blogs/:id", userBlogController);
+router.route("/user-blogs/:id").get(jwtMiddleware, userBlogController);
 
 export default router;

@@ -123,11 +123,19 @@ export const userBlogController = async (req, res) => {
         message: "blogs not found by this id!",
       });
     }
-
+    const length = userBlog.blogs.length;
+    if (length === 0) {
+      return res.status(200).send({
+        success: false,
+        message: "No Any Blog is created!",
+        length: userBlog.blogs.length,
+      });
+    }
     return res.status(200).send({
       success: true,
       message: "user blogs found!",
       userBlog,
+      length: userBlog.blogs.length,
     });
   } catch (error) {
     console.log(error);

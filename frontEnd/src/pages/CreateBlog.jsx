@@ -22,14 +22,18 @@ function CreateBlog(props) {
             title: data.title,
             description: data.description,
             image: data.image,
-            user: id
+            user: id,
         }
 
 
-        await axios.post('http://localhost:3000/blog/create-blog', userInfo)
+        await axios.post('/api/blog/create-blog', userInfo, {
+            headers: {
+                Authorization: `bearer ${(localStorage.getItem('token'))}`
+            }
+        })
             .then((res) => {
                 props.setProgress(60);
-                if (res.data) {
+                if (userInfo) {
                     props.setProgress(100);
                     toast.success("Your Blog created successfully!");
                     navigate("/myblogs")

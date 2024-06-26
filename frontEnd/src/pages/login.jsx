@@ -22,7 +22,7 @@ function Login(props) {
             email: data.email,
             password: data.password
         }
-        await axios.post('http://localhost:3000/user/login', userInfo)
+        await axios.post('/api/user/login', userInfo)
             .then((res) => {
                 props.setProgress(40);
                 if (res.data) {
@@ -30,6 +30,7 @@ function Login(props) {
                     localStorage.setItem("user", res.data.user.id);
                     dispatch(authActions.login())
                     props.setProgress(100);
+                    localStorage.setItem("token", res.data.token);
                     toast.success(" Login successfully!");
                     navigate("/blogs");
                 }
@@ -48,7 +49,7 @@ function Login(props) {
         <>
             <div className='flex justify-center items-center h-screen'>
                 <div id="" className="">
-                    <div className="modal-box w-screen   bg-slate-900 text-white shadow-lg shadow-black">
+                    <div className="modal-box w-screen bg-slate-900 text-white shadow-lg shadow-black">
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <Link to={"/"} className=" absolute right-2 top-2">✕</Link>
                             <h3 className="font-bold text-lg mb-3">Login</h3>
