@@ -15,7 +15,7 @@ const app = express();
 connectDB();
 
 //middlewares
-app.use(cors({ origin: "https://blogpulse-3hfr.onrender.com" }));
+app.use(cors({ origin: "https://blog-pulse.netlify.app/" }));
 app.use(express.json());
 app.use(morgan("dev"));
 
