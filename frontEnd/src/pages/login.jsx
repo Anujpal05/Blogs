@@ -22,21 +22,22 @@ function Login(props) {
             email: data.email,
             password: data.password
         }
+        props.setProgress(20)
         await axios.post('/api/user/login', userInfo)
             .then((res) => {
                 props.setProgress(40);
                 if (res.data) {
+                    navigate("/blogs");
                     props.setProgress(80);
                     localStorage.setItem("user", res.data.user.id);
                     dispatch(authActions.login())
                     props.setProgress(100);
                     localStorage.setItem("token", res.data.token);
                     toast.success(" Login successfully!");
-                    navigate("/blogs");
                 }
             }).catch((error) => {
                 props.setProgress(100);
-                toast.error(error.response.data.message)
+                toast.error(error.response.data.message ? error.response.data.message : "Server Error!")
             })
         props.setProgress(0);
     }
