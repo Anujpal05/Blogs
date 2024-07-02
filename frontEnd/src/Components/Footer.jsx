@@ -1,16 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 function Footer() {
+
+    let isLogin = useSelector((state) => state.isLogin);
+    const user = localStorage.getItem("user");
+
+    if (isLogin || user) {
+        isLogin = true;
+    }
+
     return (
         <div className=' '>
             <footer className="footer footer-center rounded bg-slate-950 shadow-md shadow-white text-gray-300 p-10">
-                <nav className="grid grid-flow-col gap-4">
+                {isLogin && (<nav className="grid grid-flow-col gap-4">
                     <NavLink to={"/"} className="link link-hover">Blog_app</NavLink>
                     <NavLink to={"/blogs"} className="link link-hover">Blogs</NavLink>
                     <NavLink to={"/myblogs"} className="link link-hover">My Blogs</NavLink>
                     <NavLink to={"/createblog"} className="link link-hover">Create Blog</NavLink>
-                </nav>
+                </nav>)}
                 <nav>
                     <div className="grid grid-flow-col gap-4">
                         <a>
@@ -49,7 +58,7 @@ function Footer() {
                     </div>
                 </nav>
                 <aside>
-                    <p>Copyright © ${new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+                    <p>Copyright © ${new Date().getFullYear()} - All right reserved by Blogpulse Ltd</p>
                 </aside>
             </footer>
         </div>

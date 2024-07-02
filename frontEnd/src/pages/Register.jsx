@@ -37,7 +37,7 @@ function Register(props) {
                     navigate("/blogs");
                 }
             }).catch((error) => {
-                toast.error(error.response.data.message);
+                toast.error(error.response.data.message ? error.response.data.message : "Server error!");
             })
 
 
