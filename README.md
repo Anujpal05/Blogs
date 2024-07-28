@@ -56,7 +56,7 @@ Welcome to BlogPulse, a responsive web application where users can read blogs, w
 
 ## Usage
 - **Register:** Create a new account.
-= **Login:** Sign in with your credentials.
+- **Login:** Sign in with your credentials.
 - **Browse Blogs:** View blogs posted by other users.
 - **Create Blog:** Write and publish your own blog.
 - **Edit Blog:** Update your own blog posts.
