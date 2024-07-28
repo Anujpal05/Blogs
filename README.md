@@ -2,20 +2,20 @@
 Welcome to BlogPulse, a responsive web application where users can read blogs, write their own blogs, and manage their content with ease. This project is built using React, Redux Toolkit, JWT token for authentication, and Toastify for notifications.
 
 ## Features
-**User Authentication:** Secure login and registration using JWT tokens.
-**Read Blogs:** View blogs posted by other users.
-**Write Blogs:** Create and publish your own blogs.
-**Update and Delete:** Edit or delete your own blog posts.
-**Responsive Design:** Ensures a seamless experience across different devices.
+- **User Authentication:** Secure login and registration using JWT tokens.
+- **Read Blogs:** View blogs posted by other users.
+- **Write Blogs:** Create and publish your own blogs.
+- **Update and Delete:** Edit or delete your own blog posts.
+- **Responsive Design:** Ensures a seamless experience across different devices.
 
 ## Technologies Used
-**React:** For building the user interface.
-**Redux Toolkit**: For state management.
-**JWT Token:** For secure user authentication.
-**Toastify:** For displaying notifications.
-**Axios:** For making API requests.
-**Express:** For backend server.
-**MongoDB:** For database.
+- **React:** For building the user interface.
+- **Redux Toolkit**: For state management.
+- **JWT Token:** For secure user authentication.
+- **Toastify:** For displaying notifications.
+- **Axios:** For making API requests.
+- **Express:** For backend server.
+- **MongoDB:** For database.
 
 ## Installation
 
@@ -55,13 +55,13 @@ Welcome to BlogPulse, a responsive web application where users can read blogs, w
     ```
 
 ## Usage
-**Register:** Create a new account.
-**Login:** Sign in with your credentials.
-**Browse Blogs:** View blogs posted by other users.
-**Create Blog:** Write and publish your own blog.
-**Edit Blog:** Update your own blog posts.
-**Delete Blog:** Remove your own blog posts.
-**Notifications:** Receive toast notifications for various actions (e.g., login success, blog creation).
+- **Register:** Create a new account.
+= **Login:** Sign in with your credentials.
+- **Browse Blogs:** View blogs posted by other users.
+- **Create Blog:** Write and publish your own blog.
+- **Edit Blog:** Update your own blog posts.
+- **Delete Blog:** Remove your own blog posts.
+- **Notifications:** Receive toast notifications for various actions (e.g., login success, blog creation).
 
 ## Acknowledgments
-Thank You for Vising this project.
+Thank You for Visiting this project.
