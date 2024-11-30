@@ -11,7 +11,7 @@ import { jwtMiddleware } from "../jwt.js";
 
 const router = express.Router();
 
-//router
+//Router
 
 //GET || all-blogs
 router.route("/all-blog").get(jwtMiddleware, getAllBlogsController);
