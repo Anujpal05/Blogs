@@ -11,7 +11,7 @@ function Blogs(props) {
 
     const getAllBlogs = async () => {
         try {
-            const { data } = await axios.get("/api/blog//all-blog", {
+            const { data } = await axios.get("/api/blog/all-blog", {
                 headers: {
                     Authorization: `bearer ${(localStorage.getItem('token'))}`
                 }
