@@ -24,7 +24,7 @@ function Register(props) {
             email: data.email,
             password: data.password
         }
-        await axios.post('/api/user/register', userInfo)
+        await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/user/register`, userInfo)
             .then((res) => {
                 props.setProgress(40);
                 if (res.data) {

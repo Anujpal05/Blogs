@@ -26,7 +26,7 @@ function CreateBlog(props) {
         }
 
 
-        await axios.post('/api/blog/create-blog', userInfo, {
+        await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/blog/create-blog`, userInfo, {
             headers: {
                 Authorization: `bearer ${(localStorage.getItem('token'))}`
             }
@@ -50,7 +50,7 @@ function CreateBlog(props) {
     return (
         <div className='flex md:justify-center h-screen'>
             <div id="" className="">
-                <div className="modal-box w-screen md:mt-36 mt-40 bg-slate-900 text-white shadow-lg shadow-black">
+                <div className="modal-box w-screen md:mt-36 mt-24 bg-slate-900 text-white shadow-lg shadow-black">
                     <form method="dialog" onSubmit={handleSubmit(onSubmit)}>
                         <Link to={"/myblogs"} className=" absolute right-2 top-2">✕</Link>
                         <h3 className="font-bold text-2xl text-center mb-3 ">CREATE BLOG</h3>
@@ -61,7 +61,7 @@ function CreateBlog(props) {
                         </div>
                         <div className='flex flex-col space-y-2 my-3'>
                             <span>Description</span>
-                            <input className='p-2  rounded-md outline-none border-2 bg-slate-800 text-white ' placeholder='Enter your description' name='description' type='text' {...register("description", { required: true })} />
+                            <textarea className='p-2  rounded-md outline-none border-2 bg-slate-800 text-white ' placeholder='Enter your description' name='description' type='text' {...register("description", { required: true })} rows={4} />
                             {errors.description && <span className=' text-red-400 text-sm'>This field is required</span>}
                         </div>
                         <div className='flex flex-col space-y-2 my-3'>
@@ -70,7 +70,7 @@ function CreateBlog(props) {
                             {errors.image && <span className=' text-red-400 text-sm'>This field is required</span>}
                         </div>
                         <div className='flex justify-center items-center'>
-                            <button className=' bg-pink-600 text-white px-3 py-1 rounded-md m-4 hover:bg-pink-700 duration-300' >Upload</button>
+                            <button className=' bg-pink-600 text-white px-3 py-1 rounded-md m-4 hover:bg-pink-700 duration-300 outline-none' >Upload</button>
                         </div>
                     </form>
 

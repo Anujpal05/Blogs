@@ -16,12 +16,14 @@ import Footer from './Components/Footer'
 
 
 function App() {
-  let isLogin = useSelector((state) => state.isLogin);
+  let isLogin = useSelector((state) => state.isLogin || false);
   const [progress, setProgress] = useState(0);
   const isUser = localStorage.getItem("user");
   if (isLogin || isUser) {
     isLogin = true
   }
+
+  console.log(import.meta.env.VITE_SERVER_URL);
 
   return (
     <div className=' min-h-screen'>

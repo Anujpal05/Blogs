@@ -5,17 +5,17 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoute.js";
 import blogRoute from "./routes/blogRoute.js";
+dotenv.config();
 
 const port = process.env.PORT || 3000;
 
-dotenv.config();
 const app = express();
 
 //mongodb connection
 connectDB();
 
 //middlewares
-app.use(cors({ origin: "https://blog-pulse.netlify.app/" }));
+app.use(cors({ origin: process.env.CLIENT_URL }));
 app.use(express.json());
 app.use(morgan("dev"));
 

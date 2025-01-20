@@ -23,7 +23,7 @@ function Login(props) {
             password: data.password
         }
         props.setProgress(20)
-        await axios.post('/api/user/login', userInfo)
+        await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/user/login`, userInfo)
             .then((res) => {
                 props.setProgress(40);
                 if (res.data) {
@@ -39,6 +39,7 @@ function Login(props) {
                 props.setProgress(100);
                 toast.error(error.response.data.message ? error.response.data.message : "Server Error!")
             })
+
         props.setProgress(0);
     }
 

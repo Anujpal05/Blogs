@@ -81,6 +81,7 @@ export const getAllUsers = async (req, res) => {
 
 export const loginController = async (req, res) => {
   try {
+    
     const { email, password } = req.body;
     if (!email || !password) {
       return res.status(400).send({

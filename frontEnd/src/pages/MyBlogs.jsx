@@ -13,7 +13,7 @@ function MyBlogs(props) {
         try {
             props.setProgress(30);
             const id = localStorage.getItem("user");
-            const { data } = await axios.get(`/api/blog/user-blogs/${id}`, {
+            const { data } = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/blog/user-blogs/${id}`, {
                 headers: {
                     Authorization: `bearer ${(localStorage.getItem('token'))}`
                 }

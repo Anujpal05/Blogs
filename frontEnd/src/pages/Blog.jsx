@@ -20,7 +20,7 @@ function Blog(props) {
     const viewblog = async () => {
         try {
             props.setProgress(30);
-            const blog_Data = await axios.get(`/api/blog/get-blog/${id}`, {
+            const blog_Data = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/blog/get-blog/${id}`, {
                 headers: {
                     Authorization: `bearer ${(localStorage.getItem('token'))}`
                 }
@@ -44,7 +44,7 @@ function Blog(props) {
     const deleteBlog = async () => {
         const bool = confirm("Are you sure to delete this blog?");
         if (bool) {
-            await axios.delete(`/api/blog/delete-blog/${id}`, {
+            await axios.delete(`${import.meta.env.VITE_SERVER_URL}/api/blog/delete-blog/${id}`, {
                 headers: {
                     Authorization: `bearer ${(localStorage.getItem('token'))}`
                 }

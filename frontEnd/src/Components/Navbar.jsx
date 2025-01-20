@@ -36,7 +36,7 @@ function Navbar() {
                             <li><NavLink to='/createblog'>CREATE_BLOG</NavLink></li>
                         </ul>
                     </div>}
-                    <NavLink to="/" className="btn btn-ghost text-xl md:px-6 p-0 ">BLOGPULSE</NavLink>
+                    <NavLink to="/" className="btn btn-ghost text-xl md:px-6 p-0 outline-none ">BLOGPULSE</NavLink>
                 </div>
                 {isLogin && <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -47,8 +47,8 @@ function Navbar() {
                 </div>}
                 <div className="navbar-end space-x-3">
                     {!isLogin && (<>
-                        <NavLink to="/login" className="p-2 rounded-md border-2 border-slate-800 shadow-md shadow-black md:mr-10">LOGIN</NavLink></>)}
-                    {isLogin && <button className="p-2 rounded-md border-2 border-slate-800 shadow-md shadow-black md:mr-10" onClick={handleLogout}>LOGOUT</button>}
+                        <NavLink to="/login" className="p-2 rounded-md border-2 border-slate-800 shadow-md shadow-black md:mr-10 outline-none">LOGIN</NavLink></>)}
+                    {isLogin && <button className="p-2 rounded-md border-2 border-slate-800 shadow-md shadow-black md:mr-10 outline-none" onClick={handleLogout}>LOGOUT</button>}
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@ function UpdateBlog(props) {
 
     const blogData = async () => {
         props.setProgress(30);
-        const blog_data = await axios.get(`/api/blog/get-blog/${id}`, {
+        const blog_data = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/blog/get-blog/${id}`, {
             headers: {
                 Authorization: `bearer ${(localStorage.getItem('token'))}`
             }
@@ -55,7 +55,7 @@ function UpdateBlog(props) {
             user: user_id,
         }
         props.setProgress(30);
-        await axios.put(`/api/blog/update-blog/${id}`, userInfo, {
+        await axios.put(`${import.meta.env.VITE_SERVER_URL}/api/blog/update-blog/${id}`, userInfo, {
             headers: {
                 Authorization: `bearer ${(localStorage.getItem('token'))}`
             }
